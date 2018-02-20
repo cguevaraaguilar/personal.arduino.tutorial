@@ -34,10 +34,10 @@ void blink () {
 
   digitalWrite(LED_BUILTIN, HIGH);   // Enciende el led
   readClick ();
-  delay(1000);                       // Espera un segundo
+  delay(500);                       // Espera un segundo
   digitalWrite(LED_BUILTIN, LOW);    // Apaga el led
   readClick ();
-  delay(1000);                       // Espera un segundo
+  delay(500);                       // Espera un segundo
 }
 
 void readClick () {
