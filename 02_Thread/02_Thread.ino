@@ -36,6 +36,32 @@ String msButtonState = "El estado del botón en D02 es: ";
 String msButtonPressed = "Presionado";
 String msButtonOpen = "Abierto";
 
+// Configura el entorno de ejecución.
+void setup(){
+
+  // Habilita comunicación serial.
+  Serial.begin(9600);
+
+  // Configura hilo de lecutra de botón.
+  moThreadReadButton->onRun(readButtonState);
+  moThreadReadButton->setInterval(mnTimeReadButton);
+
+  // Configura hilo de parpadeo de LED.
+  moThreadBlinkLED.onRun(blinkLED);
+  moThreadBlinkLED.setInterval(mnTimeBlinckLED);
+
+  // Agrega los hilos al controlador.
+  moContrroller.add(moThreadReadButton);
+  moContrroller.add(&moThreadBlinkLED); // & to pass the pointer to it
+} // void setup(){
+
+// Proceso principal
+void loop(){
+
+  // Inicia la ejecución de los hilos
+  moContrroller.run();
+} // void loop(){
+
 // Lee si hay un click
 void readButtonState(){
 
@@ -69,29 +95,3 @@ void blinkLED(){
     mnLEDStatus = !mnLEDStatus;
   
 } // void blinkLED(){
-
-// Configura el entorno de ejecución.
-void setup(){
-
-  // Habilita comunicación serial.
-  Serial.begin(9600);
-
-  // Configura hilo de lecutra de botón.
-  moThreadReadButton->onRun(readButtonState);
-  moThreadReadButton->setInterval(mnTimeReadButton);
-
-  // Configura hilo de parpadeo de LED.
-  moThreadBlinkLED.onRun(blinkLED);
-  moThreadBlinkLED.setInterval(mnTimeBlinckLED);
-
-  // Agrega los hilos al controlador.
-  moContrroller.add(moThreadReadButton);
-  moContrroller.add(&moThreadBlinkLED); // & to pass the pointer to it
-} // void setup(){
-
-// Proceso principal
-void loop(){
-
-  // Inicia la ejecución de los hilos
-  moContrroller.run();
-} // void loop(){
