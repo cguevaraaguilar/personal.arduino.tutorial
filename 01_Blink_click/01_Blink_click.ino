@@ -6,7 +6,10 @@
   Comments:
 */
 
+// Pin de lectura D02
 int pushButton = 2;
+
+// Estado inicial no presionado del botón
 int buttonState = 0;
 
 // Inicializa la aplicación.
@@ -15,34 +18,46 @@ void setup() {
   // Inicializa puerto serial
   Serial.begin (9600);
   
-  // Inicializa el led de salida.
+  // Inicializa el led de salida (Por default el 13)
   pinMode(LED_BUILTIN, OUTPUT);
 
   // Inicializa el led de entrada.
   pinMode (pushButton, INPUT);
-}
+} // void setup() {
 
 // Loop de Ejecución
 void loop() {
 
+  // Invoca la función principal
   blink ();
-  
-  
-}
+} // void loop() {
 
 void blink () {
 
-  digitalWrite(LED_BUILTIN, HIGH);   // Enciende el led
-  readClick ();
-  delay(500);                       // Espera un segundo
-  digitalWrite(LED_BUILTIN, LOW);    // Apaga el led
-  readClick ();
-  delay(500);                       // Espera un segundo
-}
+  // Enciende el led
+  digitalWrite(LED_BUILTIN, HIGH);   
 
+  // Evalúa el estado de lectura del click (está muy chafa así)
+  readClick ();                   
+  
+  // Espera un segundo
+  delay(500);                       
+  
+  // Apaga el led
+  digitalWrite(LED_BUILTIN, LOW);    
+
+  // Evalúa el estado de lectura del click (está muy chafa así)
+  readClick ();
+
+  // Espera un segundo
+  delay(500);                       
+} // void blink () {
+
+// Lee si hubo evento en el pin
 void readClick () {
 
-  int newState = digitalRead (pushButton);  // Lee el estado de D02
+  // Lee el estado de D02
+  int newState = digitalRead (pushButton);  
 
   // Si cambió el estado del botón.
   if (newState != buttonState) {
@@ -52,7 +67,5 @@ void readClick () {
 
     // Indica el nuevo estado.
     Serial.println (buttonState);
-  }
-
-}
-
+  } // if (newState != buttonState) {
+} // void readClick () {
