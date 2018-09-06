@@ -5,10 +5,12 @@
   Description:  Código que reliza la lectura de eventos de botón y parpadeo de led de manera asíncrona.
   Author:       Carlos Ernesto Guevara Aguilar.
   Creation:     3 de Febrero de 2018.
-  Update:       3 de Febrero de 2018.
+  Update:       6 de Septiembre de 2018.
   Comments:
+                6 de Septiembre de 2018.
+                  Se reorganizó el código.
 */
-
+ 
 // Controlador de hilos
 ThreadController moContrroller = ThreadController();
 
@@ -41,6 +43,12 @@ void setup(){
 
   // Habilita comunicación serial.
   Serial.begin(9600);
+
+  // Inicializa el led de salida (Por default el 13)
+  pinMode(LED_BUILTIN, OUTPUT);
+
+  // Inicializa el led de entrada.
+  pinMode (mnPushButton, INPUT);
 
   // Configura hilo de lecutra de botón.
   moThreadReadButton->onRun(readButtonState);
@@ -82,9 +90,10 @@ void readButtonState(){
 
       // Si abierto.
       Serial.println (msButtonState + msButtonOpen);
+      
     } // if (mnButtonState) {
   } // if (lnNewState != mnButtonState) {
-} // void readButtonState(){
+} // void readButtonState(){ 
 
 // Parpadea led en D13 
 void blinkLED(){
@@ -93,5 +102,4 @@ void blinkLED(){
     digitalWrite(LED_BUILTIN, mnLEDStatus);   
     // Cambia el estatus del LED para el siguiente ciclo.
     mnLEDStatus = !mnLEDStatus;
-  
 } // void blinkLED(){
