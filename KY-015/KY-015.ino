@@ -109,7 +109,7 @@ void start_test () {
   delayMicroseconds (80);
   
   // Si la lectura es baja espera 80 milisegundos
-  if  (digitalRead (DHpin) == LOW);
+  if  (digitalRead (DHpin) == LOW)
     delayMicroseconds (80);
 
   // Hace la lectura de los 5 bytes de información.
