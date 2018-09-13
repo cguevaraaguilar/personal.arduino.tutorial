@@ -1,19 +1,17 @@
 /*
-Descripción:  Lectura de sensor de Humedad KY_015
+Descripción:  KY-015 Temperature and Humidity Sensor Module.
 Autor:        Carlos Ernesto Guevara Aguilar.
 F. Creación:  7 de Septiembre de 2018.
 F. Cambio:    7 de Septiembre de 2018.
 Comentarios:
               Se realizó diagrama con Fritzing en ./fritzing
-
-              KY015 DHT11 Temperature and humidity sensor.
 */
 
 // Velocidad del puerto serial
 static const short SERIAL_SPEED = 9600;
 
-// Pin con el que se harán las lecturas del DHT11.
-static const byte DHpin = 8;
+// Pin con el que se harán las lecturas del PIN_DHT11.
+static const byte PIN_DHT11 = 8;
 
 // Arreglo donde se almacenarán las lecturas.
 byte dat [5];
@@ -25,7 +23,7 @@ void setup() {
   Serial.begin (SERIAL_SPEED);
 
   // Establece el pin para lectura / escritura.
-  pinMode (DHpin, OUTPUT);
+  pinMode (PIN_DHT11, OUTPUT);
 } // void setup() {
 
 // Punto de ejecución.
@@ -66,18 +64,18 @@ byte read_data () {
   for (int i = 0 ; i < 8 ; i++) {
 
     // Espera hasta que la lectura sea 0, ie el dispositivo esté listo.
-    while (digitalRead (DHpin) == LOW);
+    while (digitalRead (PIN_DHT11) == LOW);
 
     // Espera 30 microsegundos.
     delayMicroseconds (30);
 
     //High in the former, low in the post
-    if (digitalRead (DHpin) == HIGH) {
+    if (digitalRead (PIN_DHT11) == HIGH) {
       result |= (1 << (8 - i));
-    } // if (digitalRead (DHpin) == HIGH) {
+    } // if (digitalRead (PIN_DHT11) == HIGH) {
 
     // Espera hasta el próximo bit de recepción.
-    while (digitalRead (DHpin) == HIGH);
+    while (digitalRead (PIN_DHT11) == HIGH);
   } // for (int i = 0 ; i < 8 ; i++) {
 
   return (result);
@@ -87,29 +85,29 @@ byte read_data () {
 void start_test () {
 
   // Baja el pin para poder enviar la señal de lectura.
-  digitalWrite (DHpin, LOW);
+  digitalWrite (PIN_DHT11, LOW);
   
   // Espera 30 milisegundos.
   delay (30);
 
   // Sube el pin para poder iniciar la lectura.
-  digitalWrite (DHpin, HIGH);
+  digitalWrite (PIN_DHT11, HIGH);
 
   // Espera al sensor
   delayMicroseconds (40);
 
   // Permite la lecutura del pin.
-  pinMode (DHpin, INPUT);
+  pinMode (PIN_DHT11, INPUT);
 
   // Mientras la lectura es alta
   
-  while (digitalRead (DHpin) == HIGH);
+  while (digitalRead (PIN_DHT11) == HIGH);
 
   // Espera 80 micro segundos.
   delayMicroseconds (80);
   
   // Si la lectura es baja espera 80 milisegundos
-  if  (digitalRead (DHpin) == LOW)
+  if  (digitalRead (PIN_DHT11) == LOW)
     delayMicroseconds (80);
 
   // Hace la lectura de los 5 bytes de información.
@@ -118,8 +116,8 @@ void start_test () {
   } // for (int i = 0; i < 5; i++) {
 
   // Prepara el pin para salida
-  pinMode (DHpin, OUTPUT);
+  pinMode (PIN_DHT11, OUTPUT);
 
   // Indica que ha terminado la lecutra.
-  digitalWrite (DHpin, HIGH);
+  digitalWrite (PIN_DHT11, HIGH);
 } // void start_test () {
