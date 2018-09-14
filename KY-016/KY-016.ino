@@ -2,7 +2,7 @@
 Descripción:  KY-016 RGB Full color LED module.
 Autor:        Carlos Ernesto Guevara Aguilar.
 F. Creación:  12 de Septiembre de 2018.
-F. Cambio:    12 de Septiembre de 2018.
+F. Cambio:    13 de Septiembre de 2018.
 Comentarios:
               Se realizó diagrama con Fritzing en ./fritzing
 */
@@ -81,5 +81,126 @@ void loop() {
   digitalWrite (PIN_GREEN, LOW);
   digitalWrite (PIN_BLUE, LOW);
   delay (1000);
+
+  for (val = 0 ; val < 254 ; val++) {
+
+    analogWrite (PIN_RED, val);
+    delay (4);
+
+  } // for (val = 0 ; val < 254 ; val++) {
+
+  for (val = 255 ; val > 0 ; val--) {
+
+    analogWrite (PIN_RED, val);
+    delay (4);
+
+  } // for (val = 255 ; val>= 0 ; val--) {
+
+  for (val = 0 ; val < 254 ; val++) {
+  
+    analogWrite (PIN_GREEN, val);
+    delay (4);
+
+  } // for (val = 0 ; val < 255 ; val++) {
+
+  for (val = 255 ; val > 0 ; val--) {
+
+    analogWrite (PIN_GREEN, val);
+    delay (4);
+
+  } // for (val = 255 ; val > 0 ; val--) {
+  
+  for (val = 0 ; val < 254 ; val++) {
+  
+    analogWrite (PIN_BLUE, val);
+    delay (4);
+    
+  } // for (val = 0 ; val < 254 ; val++) {
+
+  for (val = 255 ; val > 0 ; val--) {
+
+    analogWrite (PIN_BLUE, val);
+    delay (4);
+
+  } // for (val = 255 ; val > 0 ; val--) {
+  
+  for (val = 0 ; val < 254 ; val++) {
+  
+    analogWrite (PIN_RED, val);
+    analogWrite (PIN_GREEN, val);
+    delay (4);
+
+  } // for (val = 0 ; val < 254 ; val++) {
+
+  for (val = 255 ; val > 0 ; val--) {
+
+    analogWrite (PIN_RED, val);
+    analogWrite (PIN_GREEN, val);
+    delay (4);
+
+  } // for (val = 255 ; val > 0 ; val--) {
+  
+  for (val = 0 ; val < 254 ; val++) {
+  
+    analogWrite (PIN_RED, val);
+    analogWrite (PIN_BLUE, val);
+    delay (4);
+    
+  } // for (val = 0 ; val < 254 ; val++) {
+
+  for (val = 255 ; val > 0 ; val--) {
+
+    analogWrite (PIN_RED, val);
+    analogWrite (PIN_BLUE, val);
+    delay (4);
+
+  } // for (val = 255 ; val > 0 ; val--) {
+  
+  for (val = 0 ; val < 254 ; val++) {
+  
+    analogWrite (PIN_GREEN, val);
+    analogWrite (PIN_BLUE, val);
+    delay (4);
+    
+  } // for (val = 0 ; val < 254 ; val++) {
+
+  for (val = 255 ; val > 0 ; val--) {
+
+    analogWrite (PIN_GREEN, val);
+    analogWrite (PIN_BLUE, val);
+    delay (4);
+
+  } // for (val = 255 ; val > 0 ; val--) {
+  
+  for (val = 0 ; val < 254 ; val++) {
+  
+    analogWrite (PIN_RED, val);
+    analogWrite (PIN_GREEN, val);
+    analogWrite (PIN_BLUE, val);
+    delay (4);
+    
+  } // for (val = 0 ; val < 254 ; val++) {
+
+  for (val = 255 ; val > 0 ; val--) {
+
+    analogWrite (PIN_RED, val);
+    analogWrite (PIN_GREEN, val);
+    analogWrite (PIN_BLUE, val);
+    delay (4);
+
+  } // for (val = 255 ; val > 0 ; val--) {
+
+  for (val = 0 ; val < 254 ; val++) {
+  
+    analogWrite (PIN_RED, random (256));
+    analogWrite (PIN_GREEN, random (256));
+    analogWrite (PIN_BLUE, random (256));
+    delay (250);
+    
+  } // for (val = 0 ; val < 254 ; val++) {
+
+  digitalWrite (PIN_RED, LOW);
+  digitalWrite (PIN_GREEN, LOW);
+  digitalWrite (PIN_BLUE, LOW);
 
 } // void loop() {
