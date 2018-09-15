@@ -1,11 +1,11 @@
 /*
-Descripción:  KY-016 RGB Full color LED module.
+Descripción:  KY-009 RGB Full color LED SMD Module
 Autor:        Carlos Ernesto Guevara Aguilar.
-F. Creación:  12 de Septiembre de 2018.
-F. Cambio:    13 de Septiembre de 2018.
+F. Creación:  14 de Septiembre de 2018.
+F. Cambio:    14 de Septiembre de 2018.
 Comentarios:
               Se realizó diagrama con Fritzing en ./fritzing
-              El dispositivo tiene resistencias y está polalizado al revés en relación al KY-009
+              El dispositivo no tiene resistencias y está polalizado al revés en relación al KY-016
 */
 
 // Velocidad del puerto serial
@@ -39,50 +39,61 @@ void setup() {
 void loop() {
 
   digitalWrite (PIN_RED, HIGH);
-  delay (1000);
+  digitalWrite (PIN_GREEN, HIGH);
+  digitalWrite (PIN_BLUE, HIGH);
+
   digitalWrite (PIN_RED, LOW);
   delay (1000);
-
-  digitalWrite (PIN_GREEN, HIGH);
+  digitalWrite (PIN_RED, HIGH);
   delay (1000);
+
   digitalWrite (PIN_GREEN, LOW);
   delay (1000);
-
-  digitalWrite (PIN_BLUE, HIGH);
+  digitalWrite (PIN_GREEN, HIGH);
   delay (1000);
+
   digitalWrite (PIN_BLUE, LOW);
   delay (1000);
+  digitalWrite (PIN_BLUE, HIGH);
+  delay (1000);
 
+  digitalWrite (PIN_RED, LOW);
+  digitalWrite (PIN_GREEN, LOW);
+  delay (1000);
   digitalWrite (PIN_RED, HIGH);
   digitalWrite (PIN_GREEN, HIGH);
   delay (1000);
-  digitalWrite (PIN_RED, LOW);
-  digitalWrite (PIN_GREEN, LOW);
-  delay (1000);
 
+  digitalWrite (PIN_RED, LOW);
+  digitalWrite (PIN_BLUE, LOW);
+  delay (1000);
   digitalWrite (PIN_RED, HIGH);
   digitalWrite (PIN_BLUE, HIGH);
   delay (1000);
-  digitalWrite (PIN_RED, LOW);
-  digitalWrite (PIN_BLUE, LOW);
-  delay (1000);
 
-  digitalWrite (PIN_GREEN, HIGH);
-  digitalWrite (PIN_BLUE, HIGH);
-  delay (1000);
   digitalWrite (PIN_GREEN, LOW);
   digitalWrite (PIN_BLUE, LOW);
   delay (1000);
+  digitalWrite (PIN_GREEN, HIGH);
+  digitalWrite (PIN_BLUE, HIGH);
+  delay (1000);
 
+  digitalWrite (PIN_RED, LOW);
+  digitalWrite (PIN_GREEN, LOW);
+  digitalWrite (PIN_BLUE, LOW);
+  delay (1000);
   digitalWrite (PIN_RED, HIGH);
   digitalWrite (PIN_GREEN, HIGH);
   digitalWrite (PIN_BLUE, HIGH);
   delay (1000);
-  digitalWrite (PIN_RED, LOW);
-  digitalWrite (PIN_GREEN, LOW);
-  digitalWrite (PIN_BLUE, LOW);
-  delay (1000);
 
+  for (val = 255 ; val > 0 ; val--) {
+
+    analogWrite (PIN_RED, val);
+    delay (4);
+
+  } // for (val = 255 ; val>= 0 ; val--) {
+  
   for (val = 0 ; val < 254 ; val++) {
 
     analogWrite (PIN_RED, val);
@@ -92,11 +103,11 @@ void loop() {
 
   for (val = 255 ; val > 0 ; val--) {
 
-    analogWrite (PIN_RED, val);
+    analogWrite (PIN_GREEN, val);
     delay (4);
 
-  } // for (val = 255 ; val>= 0 ; val--) {
-
+  } // for (val = 255 ; val > 0 ; val--) {
+  
   for (val = 0 ; val < 254 ; val++) {
   
     analogWrite (PIN_GREEN, val);
@@ -106,7 +117,7 @@ void loop() {
 
   for (val = 255 ; val > 0 ; val--) {
 
-    analogWrite (PIN_GREEN, val);
+    analogWrite (PIN_BLUE, val);
     delay (4);
 
   } // for (val = 255 ; val > 0 ; val--) {
@@ -120,11 +131,12 @@ void loop() {
 
   for (val = 255 ; val > 0 ; val--) {
 
-    analogWrite (PIN_BLUE, val);
+    analogWrite (PIN_RED, val);
+    analogWrite (PIN_GREEN, val);
     delay (4);
 
   } // for (val = 255 ; val > 0 ; val--) {
-  
+
   for (val = 0 ; val < 254 ; val++) {
   
     analogWrite (PIN_RED, val);
@@ -136,22 +148,6 @@ void loop() {
   for (val = 255 ; val > 0 ; val--) {
 
     analogWrite (PIN_RED, val);
-    analogWrite (PIN_GREEN, val);
-    delay (4);
-
-  } // for (val = 255 ; val > 0 ; val--) {
-  
-  for (val = 0 ; val < 254 ; val++) {
-  
-    analogWrite (PIN_RED, val);
-    analogWrite (PIN_BLUE, val);
-    delay (4);
-    
-  } // for (val = 0 ; val < 254 ; val++) {
-
-  for (val = 255 ; val > 0 ; val--) {
-
-    analogWrite (PIN_RED, val);
     analogWrite (PIN_BLUE, val);
     delay (4);
 
@@ -159,7 +155,7 @@ void loop() {
   
   for (val = 0 ; val < 254 ; val++) {
   
-    analogWrite (PIN_GREEN, val);
+    analogWrite (PIN_RED, val);
     analogWrite (PIN_BLUE, val);
     delay (4);
     
@@ -175,7 +171,6 @@ void loop() {
   
   for (val = 0 ; val < 254 ; val++) {
   
-    analogWrite (PIN_RED, val);
     analogWrite (PIN_GREEN, val);
     analogWrite (PIN_BLUE, val);
     delay (4);
@@ -190,6 +185,15 @@ void loop() {
     delay (4);
 
   } // for (val = 255 ; val > 0 ; val--) {
+  
+  for (val = 0 ; val < 254 ; val++) {
+  
+    analogWrite (PIN_RED, val);
+    analogWrite (PIN_GREEN, val);
+    analogWrite (PIN_BLUE, val);
+    delay (4);
+    
+  } // for (val = 0 ; val < 254 ; val++) {
 
   for (val = 0 ; val < 254 ; val++) {
   
@@ -200,8 +204,8 @@ void loop() {
     
   } // for (val = 0 ; val < 254 ; val++) {
 
-  digitalWrite (PIN_RED, LOW);
-  digitalWrite (PIN_GREEN, LOW);
-  digitalWrite (PIN_BLUE, LOW);
+  digitalWrite (PIN_RED, HIGH);
+  digitalWrite (PIN_GREEN, HIGH);
+  digitalWrite (PIN_BLUE, HIGH);
 
 } // void loop() {
