@@ -4,6 +4,9 @@ Autor:        Carlos Ernesto Guevara Aguilar.
 F. Creación:  12 de Septiembre de 2018.
 F. Cambio:    13 de Septiembre de 2018.
 Comentarios:
+
+              KY-016 Arduino full color 5mm RGB LED, different colors can be obtained by mixing the three primary colors.
+              
               Se realizó diagrama con Fritzing en ./fritzing
               El dispositivo tiene resistencias y está polalizado al revés en relación al KY-009
 */

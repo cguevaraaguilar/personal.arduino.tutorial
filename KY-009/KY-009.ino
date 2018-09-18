@@ -4,6 +4,9 @@ Autor:        Carlos Ernesto Guevara Aguilar.
 F. Creación:  14 de Septiembre de 2018.
 F. Cambio:    14 de Septiembre de 2018.
 Comentarios:
+
+              RGB full color LED Module KY-009 for Arduino, emits a range of colors by mixing red, green and blue. The amount of each primary color is adjusted using PWM.
+              
               Se realizó diagrama con Fritzing en ./fritzing
               El dispositivo no tiene resistencias y está polalizado al revés en relación al KY-016
 */
